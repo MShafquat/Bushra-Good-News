@@ -3,11 +3,7 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 analyzer = SentimentIntensityAnalyzer()
 
-TITLE_WEIGHT = 0.7
-BODY_WEIGHT = 0.3
 
-
-# Create your models here.
 class News(models.Model):
     title = models.CharField(max_length=250)
     pubdate = models.TimeField()
@@ -28,6 +24,4 @@ class News(models.Model):
         """
 
         title_polarity = analyzer.polarity_scores(self.title)['compound']
-        body_polarity = analyzer.polarity_scores(self.body)['compound']
-        news_polarity = body_polarity * BODY_WEIGHT + title_polarity * TITLE_WEIGHT
-        return news_polarity >= 0
+        return title_polarity >= 0
