@@ -2,7 +2,7 @@ import requests as rq
 from bs4 import BeautifulSoup as bs
 from datetime import datetime
 
-from django.db import IntegrityError
+from django.db import IntegrityError, DatabaseError
 
 from scraping.models import News
 
@@ -115,7 +115,7 @@ def scrape():
             try:
                 n.save()
                 print(f'No. {index + 1} saved.')
-            except IntegrityError as e:
+            except (IntegrityError, DatabaseError) as e:
                 print(e.args)
                 print(f'No. {index + 1} failed to save.')
         else:
