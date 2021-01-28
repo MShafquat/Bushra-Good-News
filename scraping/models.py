@@ -17,6 +17,7 @@ class News(models.Model):
     def __str__(self):
         return self.title
 
+    @property
     def is_positive(self):
         """
         checks if a news is positive
