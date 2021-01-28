@@ -5,7 +5,7 @@ analyzer = SentimentIntensityAnalyzer()
 
 
 class News(models.Model):
-    title = models.CharField(max_length=250)
+    title = models.CharField(max_length=250, db_index=True, unique=True)
     pubdate = models.TimeField()
     description = models.CharField(max_length=500, null=True)
     author = models.CharField(max_length=500)
