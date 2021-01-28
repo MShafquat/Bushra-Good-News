@@ -7,6 +7,5 @@ class NewsViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allow news to be viewed
     """
-    id_list = [news.id for news in News.objects.all().order_by('-pubdate') if news.is_positive()]
-    queryset = News.objects.filter(id__in=id_list)
+    queryset = News.objects.all().order_by('-pubdate')
     serializer_class = NewsSerializer
