@@ -1,5 +1,8 @@
 import requests as rq
 from bs4 import BeautifulSoup as bs
+from datetime import datetime
+
+from django.db import IntegrityError
 
 from scraping.models import News
 
@@ -87,7 +90,7 @@ def scrape():
     newses = top_news() + front_page()
     for index, news in enumerate(newses):
         title = news['title']
-        pubdate = news['pubDate']
+        pubdate = datetime.strptime(news['pubDate'], "%a, %d %b %Y %H:%M:%S %z")
         description = news['description']
         language = 'en'
         url = news['link']
@@ -98,19 +101,23 @@ def scrape():
         body = single_n['body'].rstrip().lstrip()
 
         n = News(
-            title,
-            pubdate,
-            description,
-            author,
-            language,
-            url,
-            image_url,
-            body
+            title=title,
+            pubdate=pubdate,
+            description=description,
+            author=author,
+            language=language,
+            url=url,
+            image_url=image_url,
+            body=body
         )
 
         if n.is_positive:
-            # n.save()
-            print(f'No. {index+1} saved.')
+            try:
+                n.save()
+                print(f'No. {index + 1} saved.')
+            except IntegrityError as e:
+                print(e.args)
+                print(f'No. {index + 1} failed to save.')
         else:
             print(f'No. {index+1} rejected.')
     return True
