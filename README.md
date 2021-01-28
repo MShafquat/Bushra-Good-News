@@ -15,4 +15,10 @@ DB_PWD=<mongodb database password>
 ```
 
 The `scrape` command need to run in order to collect news from newspapers (currently only The Daily Star) and save to
-the database. The command can be run using `python manage.py scrape`.
+the database. The command can be run using `python manage.py scrape` or from the API endpoint `/news/scrape-news/`.
+
+### API endpoints
+
+* `/news/`: Lists all news
+* `/news/id`: Detail of news with id `id`
+* `news/scrape-news/`: Scrapes and collects recent news (requires admin user)
