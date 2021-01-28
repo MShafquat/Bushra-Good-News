@@ -5,6 +5,25 @@ top_news_url = "https://www.thedailystar.net/top-news/rss.xml"
 front_page_url = "https://www.thedailystar.net/frontpage/rss.xml"
 
 
+def single_news(url):
+    """
+    :param url: link of a news
+    :return: news obj as dict
+    """
+    src = rq.get(url)
+
+    soup = bs(src.text, 'lxml')
+    detailed_content = soup.find('div', class_='detailed-content')
+    author = detailed_content.find('div', class_='author-name')
+    body = detailed_content.find('article', class_='article')
+    news = {
+        'author': author.text if author is not None else "",
+        'body': body.text if body is not None else ""
+    }
+
+    return news
+
+
 def items_to_object_list(items):
     """
     :param items: list of bs4 tag
