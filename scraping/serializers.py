@@ -3,6 +3,8 @@ from rest_framework import serializers
 
 
 class NewsSerializer(serializers.ModelSerializer):
+    is_positive = serializers.ReadOnlyField()
+
     class Meta:
         model = News
-        fields = ['title', 'url', 'pubdate', 'description', 'author', 'language', 'url', 'image_url', 'body']
+        fields = '__all__'
