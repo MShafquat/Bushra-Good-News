@@ -85,8 +85,7 @@ def front_page():
 
 def scrape():
     newses = top_news() + front_page()
-    count = 0
-    for news in newses:
+    for index, news in enumerate(newses):
         title = news['title']
         pubdate = news['pubDate']
         description = news['description']
@@ -98,21 +97,20 @@ def scrape():
         author = single_n['author'].rstrip().lstrip()
         body = single_n['body'].rstrip().lstrip()
 
-        # Write your nlp analyze code here and uncomment this comments..
-        # if not positive then write the commented create code
-        # code below will write data to mongodb so careful
-        # if you want to test then test without uncommenting the below code
+        n = News(
+            title,
+            pubdate,
+            description,
+            author,
+            language,
+            url,
+            image_url,
+            body
+        )
 
-        # News.objects.create(
-        #     title,
-        #     pubdate,
-        #     description,
-        #     author,
-        #     language,
-        #     url,
-        #     image_url,
-        #     body
-        # )
-        print(count, end=' ')
-        print('item saved.')
+        if n.is_positive:
+            # n.save()
+            print(f'No. {index+1} saved.')
+        else:
+            print(f'No. {index+1} rejected.')
     return True
