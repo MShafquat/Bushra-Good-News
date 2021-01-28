@@ -1,14 +1,9 @@
 from django.core.management.base import BaseCommand
-
-from urllib.request import urlopen
-from bs4 import BeautifulSoup
-import json
-
-from scraping.models import News
+from scraping.utils import daily_star
 
 
 class Command(BaseCommand):
     help = "Collect news"
 
     def handle(self, *args, **options):
-        pass
+        daily_star.scrap()
