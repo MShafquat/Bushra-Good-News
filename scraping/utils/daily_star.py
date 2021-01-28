@@ -1,0 +1,2 @@
+def scrap():
+    pass
