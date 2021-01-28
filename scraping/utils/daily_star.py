@@ -1,6 +1,8 @@
 import requests as rq
 from bs4 import BeautifulSoup as bs
 
+from scraping.models import News
+
 top_news_url = "https://www.thedailystar.net/top-news/rss.xml"
 front_page_url = "https://www.thedailystar.net/frontpage/rss.xml"
 
@@ -79,3 +81,38 @@ def front_page():
     soup = bs(rssc.text, features='xml')
     items = soup.find_all('item')
     return items_to_object_list(items)
+
+
+def scrape():
+    newses = top_news() + front_page()
+    count = 0
+    for news in newses:
+        title = news['title']
+        pubdate = news['pubDate']
+        description = news['description']
+        language = 'en'
+        url = news['link']
+        image_url = news['mediaContent']['url']
+
+        single_n = single_news(url)
+        author = single_n['author'].rstrip().lstrip()
+        body = single_n['body'].rstrip().lstrip()
+
+        # Write your nlp analyze code here and uncomment this comments..
+        # if not positive then write the commented create code
+        # code below will write data to mongodb so careful
+        # if you want to test then test without uncommenting the below code
+
+        # News.objects.create(
+        #     title,
+        #     pubdate,
+        #     description,
+        #     author,
+        #     language,
+        #     url,
+        #     image_url,
+        #     body
+        # )
+        print(count, end=' ')
+        print('item saved.')
+    return True

@@ -6,4 +6,4 @@ class Command(BaseCommand):
     help = "Collect news"
 
     def handle(self, *args, **options):
-        daily_star.scrap()
+        daily_star.scrape()
