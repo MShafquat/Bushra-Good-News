@@ -19,6 +19,6 @@ the database. The command can be run using `python manage.py scrape` or from the
 
 ### API endpoints
 
-* `/news/`: Lists all news
-* `/news/id`: Detail of news with id `id`
-* `news/scrape-news/`: Scrapes and collects recent news (requires admin user)
+* `/api/news/`: Lists all news
+* `/api/news/id`: Detail of news with id `id`
+* `/api/news/scrape-news/`: Scrapes and collects recent news (requires admin user)
