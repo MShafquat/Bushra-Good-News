@@ -17,7 +17,10 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', False)
 
-ALLOWED_HOSTS = ['bushra-good-news.herokuapp.com']
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'bushra-good-news.herokuapp.com',
+]
 
 # Application definition
 
