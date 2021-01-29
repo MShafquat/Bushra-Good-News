@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+<nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="/">Bushra - Good News</a>
+    </div>
+</nav>
+{% block content %}
+{% endblock %}
+{% if is_paginated %}
+    <div class="pagination is-rounded" aria-label="pagination">
+        {% if page_obj.has_previous %}
+            <a class="pagination-previous" href="?page={{ page_obj.previous_page_number }}">&laquo;</a>
+        {% else %}
+            <a class="pagination-previous" disabled><span>&laquo;</span></a>
+        {% endif %}
+        <ul class="pagination-list">
+            {% for i in paginator.page_range %}
+                {% if page_obj.number == i %}
+                    <li><a class="pagination-link is-current">{{ i }}</a></li>
+                {% else %}
+                    <li><a class="pagination-link" aria-current="page" href="?page={{ i }}">{{ i }}</a></li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+        {% if page_obj.has_next %}
+            <a class="pagination-next" href="?page={{ page_obj.next_page_number }}">&raquo;</a>
+        {% else %}
+            <a class="pagination-next" disabled><span>&raquo;</span></a>
+        {% endif %}
+    </div>
+{% endif %}
+
+</body>
+</html>
