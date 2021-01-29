@@ -6,3 +6,4 @@ beautifulsoup4==4.9.3
 requests==2.25.1
 vaderSentiment==3.3.2
 lxml==4.6.2
+django-cors-headers==3.7.0
