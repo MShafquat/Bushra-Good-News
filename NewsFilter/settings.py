@@ -28,9 +28,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # custom or installed apps
     'scraping.apps.ScrapingConfig',
     'rest_framework',
     'corsheaders',
+    'frontend',
 ]
 
 REST_FRAMEWORK = {
