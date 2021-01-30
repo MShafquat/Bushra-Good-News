@@ -12,9 +12,11 @@
         <a class="navbar-item" href="/">Bushra - Good News</a>
     </div>
 </nav>
-{% block content %}
-{% endblock %}
-{% if is_paginated %}
+<section class="section">
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    {% if is_paginated %}
     <div class="pagination is-rounded" aria-label="pagination">
         {% if page_obj.has_previous %}
             <a class="pagination-previous" href="?page={{ page_obj.previous_page_number }}">&laquo;</a>
@@ -37,6 +39,9 @@
         {% endif %}
     </div>
 {% endif %}
+    </div>
+</section>
+
 
 </body>
 </html>
