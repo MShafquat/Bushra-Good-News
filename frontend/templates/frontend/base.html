@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     {% load static %}
-    <link rel="stylesheet" href="{% static "/css/style.css" %}">
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-<nav class="navbar level is-dark" role="navigation" aria-label="main navigation">
+<nav class="navbar level is-light" role="navigation" aria-label="main navigation">
     <p class="navbar-brand level-item has-text-centered">
-        <a class="navbar-item" href="/">Bushra - Good News</a>
+        <a class="navbar-item has-text-weight-semibold" href="/"><img src="{% static "images/logo.png" %}">Bushra: Good News</a>
     </p>
 </nav>
 <section class="section">
