@@ -1,11 +1,23 @@
 {% extends 'frontend/base.html' %}
 {% block title %}{{ news.title }} | Bushra - Good News{% endblock %}
 {% block content %}
-    <h1>{{ news.title }}</h1>
-    <h2>{{ news.description }}</h2>
-    <h3>{{ news.author }}</h3>
-    <h3>{{ news.pubdate }}</h3>
-    <h3>{{ news.url }}</h3>
-    <img src="{{ news.image_url }}">
-    <p>{{ news.body }}</p>
+    <h1 class="title is-2">{{ news.title }}</h1>
+    <h2 class="subtitle"><strong>{{ news.description }}</strong></h2>
+    <hr />
+    <h2 class="title is-5"><strong>{{ news.author }}</strong></h2>
+    <h2 class="subtitle is-6">{{ news.pubdate }}</h2>
+    <a href="{{ news.url }}" target="_blank">Source</a>
+    <hr />
+    <article class="media">
+        <div class="media-content">
+            <div class="content">
+                <p>{{ news.body }}</p>
+            </div>
+        </div>
+        <div class="media-right">
+            <figure class="image is-256x256">
+                <img src="{{ news.image_url }}">
+            </figure>
+        </div>
+    </article>
 {% endblock %}

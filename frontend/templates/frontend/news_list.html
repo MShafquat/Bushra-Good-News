@@ -1,20 +1,32 @@
 {% extends 'frontend/base.html' %}
 {% block title %}Bushra - Good News{% endblock %}
 {% block content %}
-<div>
-    <!-- Iterate over object_list -->
-    {% for object in object_list %}
-        <!-- Display Objects -->
-        <div class="box">
-        <h2 class="title"><a href="{% url 'news-detail' object.id %}">{{ object.title }}</a></h2>
-        <p class="subtitle">{{ object.description }}</p>
-        </div>
-        <hr/>
-        <!-- If objet_list is empty  -->
-    {% empty %}
-        <li>No objects yet.</li>
-    {% endfor %}
-</div>
+    <div>
+        <!-- Iterate over object_list -->
+        {% for object in object_list %}
+            <!-- Display Objects -->
+            <div class="box">
+                <article class="media">
+                    <div class="media-left">
+                        <figure class="image is-128x128">
+                            <img src={{ object.image_url }}>
+                        </figure>
+                    </div>
+                    <div class="media-content">
+                        <div class="content">
+                            <h2 class="title"><a href="{% url 'news-detail' object.id %}">{{ object.title }}</a></h2>
+                            <p class="subtitle-4">{{ object.pubdate }}</p>
+                            <p class="subtitle"><strong>{{ object.description }}</strong></p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <hr/>
+            <!-- If objet_list is empty  -->
+        {% empty %}
+            <li>No objects yet.</li>
+        {% endfor %}
+    </div>
 {% endblock %}
 </body>
 </html>
