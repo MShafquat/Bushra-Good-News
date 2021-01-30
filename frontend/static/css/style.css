@@ -1,0 +1,14 @@
+.ml-mobile {
+    width: 40%;
+}
+
+@media (max-width: 480px) {
+    .med-mobile {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .ml-mobile {
+        width: 100%;
+    }
+}

@@ -1,6 +1,7 @@
 {% extends 'frontend/base.html' %}
 {% block title %}{{ news.title }} | Bushra - Good News{% endblock %}
 {% block content %}
+
     <h1 class="title is-2">{{ news.title }}</h1>
     <h2 class="subtitle"><strong>{{ news.description }}</strong></h2>
     <hr/>
@@ -9,15 +10,17 @@
     <a href="{{ news.url }}" target="_blank">Source</a>
     <hr/>
     <div class="block">
-        <div class="media-left">
-            <figure class="image is-2by1">
-                <img src="{{ news.image_url }}">
-            </figure>
-        </div>
-        <div class="media-content">
-            <div class="content">
-                <p>{{ news.body }}</p>
+        <article class="media med-mobile">
+            <div class="media-left ml-mobile">
+                <figure class="image">
+                    <img src="{{ news.image_url }}">
+                </figure>
             </div>
-        </div>
+            <div class="media-content">
+                <div class="content">
+                    <p>{{ news.body }}</p>
+                </div>
+            </div>
+        </article>
     </div>
 {% endblock %}
