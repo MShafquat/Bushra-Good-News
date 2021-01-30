@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ news.title }} | Bushra - Good News</title>
-</head>
-<body>
+{% extends 'frontend/base.html' %}
+{% block title %}{{ news.title }} | Bushra - Good News{% endblock %}
+{% block content %}
     <h1>{{ news.title }}</h1>
     <h2>{{ news.description }}</h2>
     <h3>{{ news.author }}</h3>
@@ -12,5 +8,4 @@
     <h3>{{ news.url }}</h3>
     <img src="{{ news.image_url }}">
     <p>{{ news.body }}</p>
-</body>
-</html>
+{% endblock %}
